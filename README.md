@@ -1,154 +1,161 @@
 # AI-enabled Detection of Exoplanets from Noisy Astronomical Light Curves
 
-An AI-powered pipeline for robust exoplanet detection from noisy TESS light curves using **noise fingerprinting**, **physics-aware feature engineering**, **multimodal deep learning**, and **explainable AI**.
+An AI-powered pipeline for robust exoplanet detection from noisy TESS light curves using **noise fingerprinting**, **physics-aware feature engineering**, and **deep learning**.
 
-> 🚀 Developed as part of the ISRO Hackathon.
+> 🚀 Developed for the ISRO Hackathon.
 
 ---
 
 ## Overview
 
-Detecting exoplanets from astronomical light curves is challenging due to stellar variability, instrumental systematics, flares, eclipsing binaries, and other sources of noise that often lead to false positives.
-
-This project proposes an end-to-end machine learning pipeline that automatically prepares training data, characterizes stellar noise, extracts astrophysically meaningful features, and classifies exoplanet candidates with improved robustness and interpretability.
+This project aims to improve exoplanet detection by combining astronomical signal processing with machine learning. The pipeline automates data collection from TESS, preprocesses light curves, trains deep learning models, and performs inference while reducing false positives caused by stellar noise.
 
 ---
 
-## Key Features
+## Features
 
-- Automated TESS light curve acquisition
-- Automatic dataset generation using TOI cross-matching
-- Noise fingerprinting before classification
-- Physics-aware feature extraction
-- Multi-view CNN architecture
-- Stellar parameter fusion (TIC metadata)
-- Explainable AI using SHAP
-- Diagnostic plots and confidence estimation
-- PDF and CSV report generation
-
----
-
-## Proposed Pipeline
-
-```
-TESS Light Curves
-        │
-        ▼
-Data Validation & Preprocessing
-        │
-        ▼
-Transit Detection (BLS)
-        │
-        ▼
-Candidate Extraction
-        │
-        ▼
-Noise Fingerprinting
-        │
-        ▼
-Physics-aware Feature Extraction
-        │
-        ▼
-Multi-view CNN + Stellar Parameter Fusion
-        │
-        ▼
-Planet Candidate Classification
-        │
-        ▼
-Explainability & Report Generation
-```
-
----
-
-## Technologies Used
-
-### Programming Language
-
-- Python
-
-### Astronomy Libraries
-
-- Lightkurve
-- Astroquery
-- Astropy
-
-### Machine Learning
-
-- TensorFlow
-- PyTorch
-- Scikit-learn
-
-### Scientific Computing
-
-- NumPy
-- SciPy
-- Pandas
-
-### Visualization
-
-- Matplotlib
-- Plotly
-- SHAP
+- Automated TESS light curve collection
+- Automatic dataset generation
+- Data preprocessing and normalization
+- Deep learning model training
+- Exoplanet candidate inference
+- Visualization utilities
+- Model checkpoint saving
+- Local execution without cloud dependency
 
 ---
 
 ## Repository Structure
 
-```
-project/
+```text
+isro_v2/
 │
-├── data/
-├── notebooks/
-├── preprocessing/
-├── feature_extraction/
-├── noise_fingerprinting/
-├── models/
-├── evaluation/
-├── reports/
-├── utils/
-├── requirements.txt
-└── README.md
+├── dataset/
+│   ├── lightcurves/
+│   ├── balanced_training_dataset.csv
+│   └── labeled_toi_dataset.csv
+│
+├── results/
+│
+├── best_model.keras
+│
+├── data_collector.py      # Downloads and prepares TESS data
+├── preprocess.py          # Data preprocessing
+├── model.py               # Neural network architecture
+├── train.py               # Model training
+├── inference.py           # Prediction on new light curves
+├── visualize.py           # Plotting and visualization
+└── main.py                # Main pipeline entry point
+```
+
+---
+
+## Workflow
+
+```
+Collect TESS Data
+        │
+        ▼
+Preprocess Light Curves
+        │
+        ▼
+Generate Training Dataset
+        │
+        ▼
+Train Deep Learning Model
+        │
+        ▼
+Predict Exoplanet Candidates
+        │
+        ▼
+Visualize Results
+```
+
+---
+
+## Requirements
+
+- Python 3.10+
+- TensorFlow
+- NumPy
+- Pandas
+- SciPy
+- Lightkurve
+- Astroquery
+- Matplotlib
+- Scikit-learn
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Running the Project
+
+Collect dataset
+
+```bash
+python data_collector.py
+```
+
+Train the model
+
+```bash
+python train.py
+```
+
+Run inference
+
+```bash
+python inference.py
+```
+
+Launch the complete pipeline
+
+```bash
+python main.py
 ```
 
 ---
 
 ## Current Status
 
-🚧 **Prototype Under Active Development**
+🚧 Prototype Under Active Development
 
-Current progress includes:
+Current implementation includes:
 
-- Dataset preparation pipeline
+- Dataset generation
 - Model training
-- Noise fingerprinting research
-- Architecture implementation
+- Inference pipeline
+- Visualization tools
 
 Upcoming work:
 
-- Model evaluation
-- Explainability integration
-- User interface
+- Noise fingerprinting module
+- Stellar parameter fusion
+- Explainable AI (SHAP)
 - Performance benchmarking
+- Interactive dashboard
 
 ---
 
-## Future Enhancements
+## Technologies
 
-- Transformer-based models
-- Self-supervised representation learning
-- Multi-mission support (Kepler, PLATO)
-- Real-time inference
-- Cloud deployment
-- Web dashboard
-
----
-
-## Team
-
-Developed for the **ISRO Hackathon**.
+- Python
+- TensorFlow / Keras
+- Scikit-learn
+- NumPy
+- SciPy
+- Lightkurve
+- Astroquery
+- Matplotlib
+- Pandas
 
 ---
 
-## Disclaimer
+## License
 
-This repository is currently under active development. Features, architecture, and implementation details may evolve as the project progresses.
+This repository is intended for research and educational purposes as part of the ISRO Hackathon.
